@@ -25,7 +25,7 @@
 
 # CELL ********************
 
-from pyspark.sql.functions import round 
+from pyspark.sql.functions import round, current_date
 
 # METADATA ********************
 
@@ -60,7 +60,8 @@ display(df)
 
 # CELL ********************
 
-df_with_unit_price = df.withColumn("UnitPrice", round(df["Total"] / df["Quantity"], 2))
+df_enriched = df.withColumn("UnitPrice", round(df["Total"] / df["Quantity"], 2))
+df_enriched = df_enriched.withColumn("lastupdate", current_date())
 
 # METADATA ********************
 
@@ -71,7 +72,7 @@ df_with_unit_price = df.withColumn("UnitPrice", round(df["Total"] / df["Quantity
 
 # CELL ********************
 
-display(df_with_unit_price)
+display(df_enriched)
 
 # METADATA ********************
 
@@ -83,7 +84,7 @@ display(df_with_unit_price)
 # CELL ********************
 
 gold_lakehouse_path = ("abfss://HardwareSalesDev@onelake.dfs.fabric.microsoft.com/LH_Gold.Lakehouse/Tables/hardwaresales")
-df_with_unit_price.write.format("delta").mode("overwrite").option("overwriteSchema", "true").save(gold_lakehouse_path)
+df_enriched.write.format("delta").mode("overwrite").option("overwriteSchema", "true").save(gold_lakehouse_path)
 
 # METADATA ********************
 
