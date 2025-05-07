@@ -1,0 +1,8 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../SMM_Hardware_Sales.SemanticModel"
+    }
+  }
+}

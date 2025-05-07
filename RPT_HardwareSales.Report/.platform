@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "RPT_HardwareSales"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b22301bc-3134-8e8f-4190-c757a4726ae5"
+  }
+}
